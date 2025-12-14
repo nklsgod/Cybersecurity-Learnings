@@ -1,0 +1,82 @@
+#separator:tab
+#html:true
+Was bedeutet BCDR?	Business Continuity &amp; Disaster Recovery – Sicherstellung von Weiterbetrieb und Wiederherstellung von IT-Systemen.
+Was ist Business Continuity (BC)?	Maßnahmen, damit Systeme trotz Störungen weiterlaufen oder Ausfälle abgefedert werden.
+Was ist Disaster Recovery (DR)?	Maßnahmen zur Wiederherstellung von Systemen und Daten nach schweren Vorfällen.
+Was ist das Ziel von BC?	Minimierung von Ausfallzeiten, idealerweise ohne Unterbrechung für Nutzer.
+Was ist das Ziel von DR?	Geordnete Wiederherstellung von Systemen und Daten nach Ausfall oder Angriff.
+Was ist RPO?	Recovery Point Objective – maximal akzeptabler Datenverlust (Zeit).
+Was ist RTO?	Recovery Time Objective – maximal akzeptable Wiederherstellungszeit.
+Was ist wichtiger: RPO oder RTO?	Abhängig vom System – Banken haben oft strenge Anforderungen an beide.
+Ist Backup Teil von BC oder DR?	Disaster Recovery.
+Warum schützt Replication nicht vor Ransomware?	Weil Verschlüsselung und Löschen repliziert werden.
+Replication – Hauptzweck?	Verfügbarkeit und Business Continuity.
+Backup – Hauptzweck?	Datenwiederherstellung und Schutz vor User Error/Ransomware.
+Snapshot – Zweck?	Schneller Zustand zu einem Zeitpunkt, kein vollständiges Backup.
+Azure Backup gehört zu BC oder DR?	Disaster Recovery.
+Azure Site Recovery – wofür?	Failover und schnelle Wiederanlaufzeit bei Standort-/Region-Ausfall.
+Typischer Einsatz von Azure Backup?	Schutz vor Löschen, Korruption, Ransomware.
+Was bedeutet 3-2-1 Backup?	3 Kopien, 2 verschiedene Medien, 1 Kopie offsite.
+Warum sind Immutable Backups wichtig?	Sie können nicht gelöscht oder verändert werden – Schutz vor Ransomware.
+Merksatz BCDR	BC hält Systeme am Laufen, DR bringt sie zurück, Backup rettet Daten.
+Was ist Replication?	Fortlaufende Spiegelung von Daten auf ein anderes System (nahezu Echtzeit).
+Replication – wichtigste Eigenschaft?	Sehr geringe Datenverluste (RPO ≈ 0) und hohe Verfügbarkeit.
+Replication – größter Nachteil?	Fehler und Ransomware werden mit repliziert, kein historischer Stand.
+Typischer Einsatz von Replication?	Hochverfügbarkeit, z. B. Datenbank-Replikation in anderes Rechenzentrum.
+Was ist ein Snapshot?	Zeitpunktaufnahme eines Systems oder Dateisystems.
+Snapshot – wichtigste Eigenschaft?	Sehr schnell erstellt, oft platzsparend (Copy-on-Write).
+Snapshot – größter Nachteil?	Oft am gleichen Storage, kein Schutz bei Totalverlust.
+Typischer Einsatz von Snapshots?	VM-Snapshot vor Updates oder Änderungen.
+Was ist ein Backup?	Separate Kopie der Daten auf ein anderes Medium oder System.
+Backup – wichtigste Eigenschaft?	Historische Datenstände und logische/physische Trennung.
+Backup – größter Vorteil?	Schutz vor Ransomware, Hardware- und Standortverlust.
+Backup – größter Nachteil?	Langsamere Wiederherstellung und Verwaltungsaufwand.
+Was bedeutet die 3-2-1-Regel?	3 Kopien, 2 unterschiedliche Medien, 1 Kopie offsite.
+Ziel der 3-2-1-Strategie?	Maximaler Schutz vor Hardwaredefekt, Ransomware, User Error und Standortverlust.
+Welche Methode schützt am besten vor Ransomware?	Backup.
+Welche Methode dient primär der Verfügbarkeit?	Replication.
+Merksatz Replication	Replication = Verfügbarkeit.
+Merksatz Snapshot	Snapshots = schnelles Zurückspringen.
+Merksatz Backup	Backups = echte Sicherheit.
+Merksatz 3-2-1	3-2-1 = professioneller Standard.
+Was ist ein Batch Operating System (BOS)?	Betriebssystem, das Jobs stapelweise ohne Benutzerinteraktion ausführt.
+BOS – Hauptfokus?	Durchsatz und effiziente Verarbeitung von Massendaten.
+BOS – größter Nachteil?	Lange Wartezeiten, keine Interaktion.
+Typische Einsatzgebiete für BOS?	Gehaltsabrechnung, Bank-Backends.
+Was ist ein Time-Sharing Operating System (TOS)?	Betriebssystem, das CPU-Zeit in Zeitscheiben auf mehrere Prozesse verteilt.
+TOS – Hauptfokus?	Geringe Reaktionszeit und faire CPU-Nutzung.
+TOS – typischer Scheduling-Algorithmus?	Round-Robin.
+TOS – größter Nachteil?	Kontextwechsel-Overhead und mögliche Race Conditions.
+Beispiele für TOS?	Windows, Linux, macOS.
+Was ist ein Distributed Operating System (DOS)?	Mehrere Rechner arbeiten zusammen wie ein einziges System.
+DOS – Vorteil?	Skalierbarkeit und Ausfallsicherheit.
+DOS – Nachteil?	Hohe Komplexität und Netzwerkabhängigkeit.
+Typische Einsatzgebiete für DOS?	Cloud-Systeme, Cluster.
+Was ist ein Network Operating System (NOS)?	Zentrales Server-OS zur Verwaltung von Netzwerkressourcen für Clients.
+NOS – Vorteil?	Zentrale Benutzer- und Rechteverwaltung.
+NOS – größter Nachteil?	Single Point of Failure und Kosten.
+Beispiele für NOS?	Windows Server, Linux mit LDAP.
+Was ist ein Real-Time Operating System (RTOS)?	Deterministisches Betriebssystem mit garantierten Reaktionszeiten.
+RTOS – Hauptmerkmal?	Prioritätsbasiert und deadline-getrieben.
+RTOS – typische Einsatzgebiete?	Embedded Systems, autonome Fahrzeuge.
+Merkhilfe OS-Typen	BOS=Massendaten, TOS=Interaktiv, DOS=Verteilt, NOS=Netzwerk, RTOS=Deadlines.
+What are the three core goals of any security strategy?	Prevent unauthorized access; Contain/limit damage after access; Recover systems and data.
+Why is prevention alone not sufficient in cybersecurity?	Because breaches are inevitable; security must also limit damage and enable fast recovery.
+What is Gateway Security?	Security controls at entry points (e.g., firewalls) that filter traffic between trusted and untrusted networks.
+Why is firewall security simpler in on‑premises environments?	Because there is a clear network perimeter: inside (trusted LAN) vs outside (internet).
+Why is the network perimeter blurred in cloud environments?	Users, devices, and services are distributed across locations and access resources over the internet.
+What replaces the traditional network perimeter in the cloud?	Identity and Access Management (IAM) with MFA, policies, and Zero Trust principles.
+"What does &#x27;Identity is the new perimeter&#x27; mean?"	Access decisions are based on identity, device, context, and policy rather than network location.
+What is Segregation in security?	Dividing systems and access so that compromise of one area does not grant access to all areas.
+What is the purpose of Segregation (Blast Radius)?	To minimize the impact of a breach by limiting how far an attacker can move.
+What is Zero Standing Access?	A security model where no user has permanent access to production systems.
+What is Just‑In‑Time (JIT) access?	Access that is granted only for a limited time and then automatically revoked.
+What is Just‑Enough‑Access (JEA)?	Access that provides only the minimum privileges required to perform a task.
+Why is permanent admin access dangerous?	If compromised, it allows unrestricted and prolonged control over systems.
+What is the 3‑2‑1 backup rule?	3 copies of data, on 2 different media, with 1 copy stored off‑site.
+Why do cloud environments often have recovery advantages?	They are virtualized, support automated backups, and use geographic redundancy.
+"Why is &#x27;cloud equals secure by default&#x27; a false assumption?"	Because misconfiguration, poor IAM, and missing monitoring can still lead to breaches.
+What are endpoints in an organization?	Devices or systems that communicate on the network, such as laptops, servers, VMs, and mobile devices.
+What two factors determine whether a breach is minor or catastrophic?	The privileges of the compromised account and the speed of detection and response.
+What is the main goal of Containment in cybersecurity?	To limit attacker movement and reduce overall damage after initial access.
+What is a key human factor in organizational security?	Employee training and security awareness.

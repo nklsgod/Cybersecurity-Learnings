@@ -1,232 +1,141 @@
-# Cloud-Security Playbook (24 Monate) – **Azure Hauptspur** + **TryHackMe SAL1 (Prio 2)**
-
-**Zeitbudget:** 12h/Woche (neben Job + Uni)  
-**Hauptressource (immer):** Pluralsight / A Cloud Guru **inkl. Hands-on Labs**  
-**Nebenressource:** Microsoft Learn (Scope/Begriffe, Nachschlagen)  
-**Prio 1 Zertifikate:** AZ-900 → Security+ → AZ-104 → (Azure Security Themen) → AZ-500  
-**Prio 2 Zertifikat (Flex/Fun + Skills):** **TryHackMe SAL1 (SOC Analyst Level 1)**
-
-> **Prinzip:** SAL1 ist “Prio 2” ⇒ wir bauen es so ein, dass es **deine Azure/CompTIA Ziele nicht stört**.  
-> Das heißt: SAL1 läuft als **zeitlich begrenzter Block (ca. 10–12 Wochen)** in Monaten 10–13, wenn du schon Cloud-Grundlagen hast und SOC-Training maximal “andockt”.
+# 🗺️ Cloud Security Masterplan: Identity & Automation Focus
+**Ziel:** Cloud Security Engineer / IAM Specialist (Azure Focus)
+**Strategie:** Identity-First → IaC/Automation → Security Engineering
+**Dauer:** 7 Wochen Bootcamp + 24 Monate
 
 ---
 
-## 0) Wochenstruktur (12h) – Standard
+## 🚦 Phase 0: Das Bootcamp (Woche 0–7)
+> **Fokus:** Fundament legen, Repository aufbauen, SC-900.
 
-- 2× 90 min Pluralsight/ACG Kurs (3h)
-- 2× 90 min ACG Labs (3h)
-- 1× 120 min Build (2h)
-- 1× 60 min Review (1h)
-- **+ 3h “Flex-Block”** (je nach Phase: Exam-Prep, SAL1, Extra Labs)
+### Woche 0: Setup & Standards
+* [ ] GitHub/GitLab Repo initialisieren
+* [ ] Evidence-Standard definieren (`export` > `screenshot`)
+* [ ] Dev-Tenant & Lab-VM aufsetzen
 
-**Deliverables pro Woche (Pflicht)**
+### Woche 1: Networking Fundamentals
+* [ ] OSI, TCP/IP, DNS, TLS verstehen
+* [ ] **Build:** Firewall Intake Process & Port-Cheatsheet
+* [ ] **Evidence:** Wireshark PCAP & TLS Handshake Analyse
 
-- 1 Lab-Report, 1 Diagramm, 10–20 Anki-Karten, 1 Seite “What I’d do at work” (Risiko/Logging/Rollback)
+### Woche 2: Azure Networking Basics
+* [ ] VNet, Subnets, NSGs
+* [ ] **Build:** Decision-Log Template für Freigaben
+* [ ] **Evidence:** NSG-Export & Review-Kommentar
 
----
+### Woche 3: Endpoint & Hardening
+* [ ] Windows Security, Defender, Local Admins
+* [ ] **Build:** Client Hardening Baseline v0.1
+* [ ] **Evidence:** PowerShell Export Script (Status-Check)
 
-## 1) Templates (kurz)
+### Woche 4: Identity Basics (Entra ID)
+* [ ] User, Groups, Admin Roles
+* [ ] **Build:** Identity Export Toolkit v0.1
+* [ ] **Evidence:** User/Role-Export via Graph API
 
-### Lab-Report (`00-templates/lab-report.md`)
+### Woche 5: Conditional Access & Governance
+* [ ] MFA, Block Legacy Auth, Guest Access
+* [ ] **Build:** CA Policy Pack v0.1 (Basis-Regelwerk)
+* [ ] **Evidence:** CA Configuration Export (JSON)
 
-```md
-# Lab: <Titel>
+### Woche 6: Logging & Detection (Sentinel)
+* [ ] Log Analytics, KQL Syntax
+* [ ] **Build:** KQL Pack v0.1 (Sign-ins & Audit Queries)
+* [ ] **Evidence:** Query Results & Alert Rule Screenshot
 
-Datum | Dauer | Plattform | Kosten
-Ziel | Architektur | Schritte | Nachweise
-Security Notes (Risiko/Controls/Logging)
-Lessons Learned (3 bullets)
-```
-
-### One-Pager Cloud-Doku (`00-templates/one-pager.md`)
-
-```md
-Kontext & Need | Scope | Architektur-Link
-Top-3 Risiken | Top-5 Controls | Logging/Monitoring
-Entscheidungen | Empfehlung
-```
-
----
-
-## 2) Build-Guides (ausformuliert, damit es “wie echte Arbeit” aussieht)
-
-### 2.1 Firewall/Proxy Request Playbook (10 Cases)
-
-**Deliverable-Format**
-
-- `firewall-proxy-playbook/`
-  - `playbook.md` (Übersichtstabelle)
-  - `case-01_...md` bis `case-10_...md`
-  - `checklist_missing-info.md`
-  - `risk-library.md` (Exfiltration, C2, MITM, Supply Chain …)
-
-**Case-Detail (Mini-Beispiel)**
-
-```md
-# Case – Office 365 via Proxy
-
-Business Need: O365 muss erreichbar sein.
-
-Quelle→Ziel: Client-Subnet → O365 Endpoints (FQDN-Allowlist) via Proxy
-Port/Proto: 443/TCP
-Risiko: Zu breit = Exfiltration/C2 möglich
-Controls: nur Proxy, keine direct egress, kleinste Allowlist, ggf. Zeitfenster
-Logging: Proxy logs + Review bei Spikes/neuen Zielen
-Test/Rollback: Test Login/Teams; Rollback Regel deaktivieren + Ticket referenzieren
-```
-
-### 2.2 Client Hardening Baseline + Ausnahmeprozess
-
-**Deliverable-Format**
-
-- `client-hardening/`
-  - `baseline_v1.md` (Tabelle: Setting | Warum | Prüfen | Umsetzen | Nebenwirkung | Ausnahme)
-  - `exceptions_process_v1.md` (1 Seite: Antrag → Approval → Laufzeit → Monitoring → Review)
-  - `evidence/` (Screenshots + Commands)
-
-### 2.3 Logging/KQL Mini-Notebook (Azure)
-
-**Deliverable-Format**
-
-- `logging-kql/`
-  - `kql_notebook_v1.md` (20 Queries, kommentiert)
-  - `use-cases.md` (5 Use Cases + Datenquellen + Response steps)
-  - `tuning-notes.md` (False positives, Thresholds)
+### Woche 7: Abschluss & Zertifizierung
+* [ ] **Zertifikat:** **SC-900 (Microsoft Security Fundamentals)**
+* [ ] **Release:** Repo Version 1.0 (Portfolio-Ready)
 
 ---
 
-# 3) Roadmap (mit deinen Vorgaben + SAL1 eingebaut)
+## 🚀 Phase 1: Das erste Jahr (Identity & Plattform)
+> **Mantra:** "Identity is the new Perimeter."
 
-## Monate 1–6 (Fundament)
+### Q1: Onboarding & Operative Basics (Monat 1–3)
+* **Fokus:** Prozesse verstehen, erste "Quick Wins" liefern.
+* [ ] **Network:** Firewall/Proxy Prozesse standardisieren.
+* [ ] **Endpoint:** Client Baseline v1.0 finalisieren & Drift messen.
+* [ ] **Doku:** Erste 4 ADRs (Architecture Decision Records) schreiben.
+* [ ] **Output:** Identity Review Toolkit v1.0 (Breakglass, MFA-Coverage).
 
-### Monat 1: Networking + Freigaben (Azure-Umfeld)
+### Q2: Identity Deep Dive (Monat 4–6)
+* **Fokus:** IAM als Spezialisierung.
+* [ ] **Zertifikat:** **SC-300 (Identity & Access Administrator)**.
+* [ ] **Build:** Conditional Access Pack v2.0 (Design + Doku).
+* [ ] **Build:** Privileged Identity Management (PIM) Konzept.
+* [ ] **Training:** SOC Level 1 (Teil 1) – Triage & Log Basics.
 
-- **Prio 1:** Pluralsight/ACG Networking + Azure NSG Labs
-- **Build:** Firewall/Proxy Playbook – 5 Cases
-- **Optional:** Google Cybersecurity Cert starten (wenn du Struktur willst)
+### Q3: Infrastructure & Linux (Monat 7–9)
+* **Fokus:** Die Plattform unter der Security verstehen.
+* [ ] **Zertifikat:** **AZ-104 (Azure Administrator)**.
+* [ ] **Linux:** Fundamentals, Hardening & SSH Basics.
+* [ ] **Build:** Azure Landing Zone v1 (Basic Network/Log Setup).
+* [ ] **Build:** RBAC Review Checklist.
 
-### Monat 2: Linux/Logs + Hardening Basics
-
-- **Prio 1:** Pluralsight Linux + Logging + Windows Hardening
-- **Build:** Hardening Baseline v1 + Ausnahmeprozess (10 Settings getestet)
-
-### Monat 3–4: AZ-900 (Azure Fundamentals)
-
-- **Prio 1:** ACG AZ-900 + Labs (RG/VNet/NSG/IAM basics)
-- **Build:** 4 One-Pager Cloud-Dokus + Diagramme
-- **Milestone:** AZ-900 exam-ready/abgelegt
-
-### Monat 4–6: CompTIA Security+ (Prio 1)
-
-- **Prio 1:** Pluralsight Security+ Track (als Domain-Struktur)
-- **Hands-on:** kleine Drills pro Domain (IAM, Network, IR, Crypto) in Azure/AWS-Labs oder lokal
-- **Build:** `secplus_to_job_map.md` (Security+)
-- **Milestone:** Security+ exam-ready/abgelegt (Ende Monat 6)
-
----
-
-## Monate 6–12 (Azure Admin → echte Cloud-Skills + Security in Azure)
-
-### Monat 6–9: AZ-104 (Azure Administrator) (Prio 1)
-
-- **ACG:** AZ-104 Track + Labs (Compute/Storage/Network/Monitor/RBAC)
-- **Builds (konkret):**
-  - M6: Azure Admin Lab Book v1 (4 Labs dokumentiert)
-  - M7: Operations Runbook v1 (Patch/Backup/Monitoring)
-  - M8: Cost Guardrails v1 (Budgets/Alerts + “was tue ich bei Cost Spike?”)
-  - M9: Secure Baseline Pack (Azure) (IAM/Network/Logging je 1 Seite)
-- **Milestone:** AZ-104 exam-ready/abgelegt
-
-### Monat 10–12: **Azure Security Themen (Prio 1)** + **SAL1 Vorbereitung (Prio 2)**
-
-Hier dockt SAL1 perfekt an, weil du sowieso Logging/Policy/IR anfässt.
-
-#### Zeitaufteilung pro Woche (12h) in Monaten 10–12
-
-- **6h Azure (Prio 1):**
-  - 1×90 Kurs + 1×90 Kurs + 2×90 Labs = 6h
-- **3h SAL1 (Prio 2):**
-  - 2×90 TryHackMe (Path/Rooms) = 3h
-- **2h Build (Prio 1):** Azure Artefakt der Woche
-- **1h Review:** Anki + Summary
-
-#### Azure Security (Prio 1) – Builds
-
-1. **RBAC Rollenmodell v1**
-   - 3 Rollen (Reader/Operator/Admin) + Breakglass + Approval Flow
-   - Diagramm: “Wer darf was wo?”
-   - Evidence: Screenshots/Policy/Role assignments
-2. **Azure Policy Pack v1 (light)**
-   - 5 Policies (Tagging required, no public IP, secure storage, etc.)
-   - Pro Policy: Zweck, Scope, Ausnahmen, Nachweis
-3. **Logging/KQL Notebook v1**
-   - 20 Queries + 5 Use Cases + Response steps
-
-#### SAL1 (Prio 2) – TryHackMe Reihenfolge (genau dein “Learn → Practice → Simulate”)
-
-**Learn (Core)**
-
-1. **Pre Security (Path)**
-2. **Cyber Security 101 (Path)**
-3. **SOC Level 1 (Path)**
-
-**Practice (Core)** 4. **Investigating with Splunk (Room)**  
-5. **Benign (Room)**  
-6. **Secret Recipe (Room)**
-
-**Simulate (Core)** 7. **SOC Simulator** (Szenarien für Exam Prep)
-
-**Milestone Ende Monat 12:** SOC Level 1 Path abgeschlossen + mindestens 2 Practice Rooms + erste Simulator-Szenarien.
+### Q4: Security Foundations & GRC (Monat 10–12)
+* **Fokus:** Security als Gesamtsystem & Compliance.
+* [ ] **Zertifikat:** **CompTIA Security+**.
+* [ ] **Build:** Threat-Control-Matrix (Welche Gefahr → Welches Control?).
+* [ ] **Build:** Minimales Risk-Register & Control-Matrix.
 
 ---
 
-## Monate 12–18 (Azure Security Engineer)
+## 🛡️ Phase 2: Das zweite Jahr (Automation & Engineering)
+> **Mantra:** "Code beats Click."
 
-### Monat 13: **SAL1 Exam Sprint (Prio 2, kurz & kontrolliert)**
+### Q5: Infrastructure as Code (IaC) & Data (Monat 13–15)
+* **Fokus:** Weg vom Klicken, hin zum Code.
+* [ ] **Zertifikat:** **Terraform Associate** (empfohlen) oder IaC Deep Dive.
+* [ ] **Data:** Key Vault, Storage Encryption, Private Endpoints.
+* [ ] **Build:** IaC Module für Security Resources (Policy, Alerts).
+* [ ] **Build:** Container Security Cheatsheet & Lab.
 
-> Nur wenn Security+/AZ-104 wirklich fertig sind. Sonst: SAL1 um 4–8 Wochen schieben (bleibt Prio 2).
+### Q6: Azure Security Engineering (Monat 16–18)
+* **Fokus:** Security Controls härten und automatisieren.
+* [ ] **Zertifikat:** **AZ-500 (Azure Security Engineer)**.
+* [ ] **Build:** Policy as Code (Azure Policy Definitions).
+* [ ] **Build:** Security Control Matrix v2.0 (Automated Evidence).
+* [ ] **Output:** Defender for Cloud Tuning.
 
-**Zeit (12h/Woche, nur 4 Wochen):**
+### Q7: Detection & Response (Monat 19–21)
+* **Fokus:** Angriffe erkennen und reagieren.
+* [ ] **Training:** SOC Level 1 (Teil 2) – SIEM & IR.
+* [ ] **Build:** Sentinel MVP (Analytics Rules + Automation).
+* [ ] **Build:** KQL Pack v2.0 (Advanced Hunting).
+* [ ] **Build:** 3 Incident Response Playbooks (Account, App, Data).
 
-- 7–8h Azure Security (Prio 1 weiterführen, nicht abbrechen)
-- 3–4h SAL1 (Prio 2): SOC Simulator + Wiederholen schwacher Themen
-
-**Ziel:** SAL1 Certification ablegen + Credly Badge/Proof sauber in CV/LinkedIn.
-
-### Monat 14–18: AZ-500 (Azure Security Engineer) (Prio 1)
-
-- **ACG:** AZ-500 Track + Labs (Key Vault, RBAC, Network Security, Defender, Monitoring)
-- **Builds (konkret):**
-  - Azure Security Controls Map (Top 10): was/warum/wie/nachweisen
-  - Azure IR Mini-Runbooks (3 Szenarien: Creds leaked, storage exposure, suspicious admin change)
-  - Detection Notebook v2 (30 Queries/Filters + Tuning Notes)
-- **Milestone:** AZ-500 exam-ready/abgelegt
-
----
-
-## Monate 18–24 (optional nach Zielrolle)
-
-> Wenn du Richtung **Security Architecture / Cloud Security Engineer** willst: mehr Blueprint/GRC.  
-> Wenn du Richtung **SecOps/SOC** willst: mehr Tickets/SIEM/SOAR.
-
-**Empfehlung für dich ():**
-
-- 2 Monate GRC (Risk Register + Evidence Pack)
-- 2 Monate Capstone “Azure Secure Blueprint”
-- Optional: LetsDefend Tickets 3–5/Woche für “Hackerabwehr Vibe” + Praxisstories
+### Q8: Architecture & Portfolio Finish (Monat 22–24)
+* **Fokus:** Seniorität zeigen & "Interview-Ready" werden.
+* [ ] **Doku:** 5 Architecture One-Pagers (Identity, Network, etc.).
+* [ ] **Reporting:** Quarterly Security Posture Report Template.
+* [ ] **Portfolio:** Finales Polishing, READMEs, anonymisierte Samples.
+* [ ] **Prep:** Interview-Training (Technical & Behavioral).
 
 ---
 
-# 4) CV/LinkedIn – so nutzt du SAL1 fürs “Flexen” ohne cringe
+## 🏆 Zertifikats-Roadmap
 
-**SAL1 (TryHackMe) – Beispiel-Bullets**
+| Zeitpunkt | Zertifikat | Fokus | Status |
+| :--- | :--- | :--- | :--- |
+| **Woche 7** | **SC-900** | Grundlagen | ⬜ |
+| **Monat 6** | **SC-300** | Identity (Core Skill) | ⬜ |
+| **Monat 9** | **AZ-104** | Cloud Admin (Platform) | ⬜ |
+| **Monat 12** | **Security+** | General Security Theory | ⬜ |
+| **Monat 15** | **Terraform** | IaC / Automation | ⬜ |
+| **Monat 18** | **AZ-500** | Cloud Security Eng. | ⬜ |
 
-- Completed SOC Level 1 training and virtual SOC simulations; performed alert triage, log analysis, and case closure.
-- Investigated anomalies in Splunk; documented evidence, hypotheses, remediation steps, and prevention recommendations.
-- Built detection notes (signals, false positives, tuning) and incident mini-runbooks.
+---
 
-**Azure (Prio 1) – Beispiel-Bullets**
+## 📂 Repository Struktur (Soll-Zustand)
 
-- Built RBAC role model and Azure Policy pack; documented controls, exceptions, and evidence for auditability.
-- Created KQL notebook with use cases and response steps; improved logging/monitoring coverage.
-- Authored firewall/proxy request playbook with least-privilege rules, logging strategy, and rollback plans.
+```text
+/cloud-security-portfolio
+├── 00-meta/              # Standards, ADRs, Release Notes
+├── 01-endpoint/          # Hardening Baselines (Win/Linux)
+├── 02-network/           # Firewall Intake, NSG Patterns
+├── 03-identity/          # CA Policies, Entra Exports, PIM
+├── 04-infrastructure/    # Terraform/Bicep Code (Landing Zone)
+├── 05-detection/         # Sentinel Rules, KQL Pack, IR Playbooks
+├── docs/                 # Architecture One-Pagers, Risk Register
+└── scripts/              # PowerShell Tooling (Export/Audit)
